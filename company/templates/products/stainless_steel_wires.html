@@ -1,0 +1,44 @@
+{% extends 'products/product_base.html' %}
+{% load static %}
+
+{% block product_breadcrumb_title %}Stainless Steel Wires{% endblock %}
+{% block product_breadcrumb_subtitle %}Wires{% endblock %}
+
+{% block product_image %}
+<img src="{% static 'img/product/Stainless-Steel-Wires.jpg' %}" alt="Stainless Steel Wires" class="img-fluid w-100 h-100 object-fit-cover scale-hover">
+{% endblock %}
+
+{% block product_title %}Premium Stainless Steel Wires{% endblock %}
+
+{% block product_description %}
+Being one of the customer conscious organizations, we are involved in delivering our customer a wide collection of Stainless Steel Wires at pocket friendly prices. It is made using updated technology and best quality components.
+{% endblock %}
+
+{% block product_specifications %}
+    <table class="table table-hover table-bordered align-middle mb-0">
+        <thead class="bg-primary text-white">
+            <tr>
+              <th class="w-25 ps-4">Specification</th>
+              <th class="pe-4">Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="hover-shadow">
+              <th scope="row" class="bg-dark text-white ps-4">Size Range</th>
+              <td class="pe-4">Dia 0.040 mm - 25 mm</td>
+            </tr>
+            <tr class="hover-shadow">
+              <th scope="row" class="bg-dark text-white ps-4">Regular Grade</th>
+              <td class="pe-4">201, 201 CU, 202, 204 CU, 302, 302 HQ, 304 CU or 304 HC, 303, 304, 304 L, 314, 316/316 L, 316 Ti, 347, 348, 321 LER, 308 LER, 309 LER, 310 LER, 316 LER</td>
+            </tr>
+            <tr class="hover-shadow">
+              <th scope="row" class="bg-dark text-white ps-4">Supply Condition</th>
+              <td class="pe-4">Soft, 1/4 Hard, 1/2 Hard &amp; Full Hard/Spring Hard</td>
+            </tr>
+            <tr class="hover-shadow">
+              <th scope="row" class="bg-dark text-white ps-4">Surface Finish</th>
+              <td class="pe-4">Bright Finish, Matte Finish, Soap Coated or Electro Polish Quality</td>
+            </tr>
+          </tbody>
+    </table>
+{% endblock %}

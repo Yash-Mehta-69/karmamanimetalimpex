@@ -1,0 +1,343 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+  <!-- Breadcrumb Section -->
+  <section class="breadcrumb-area bg-dark py-5 position-relative" 
+           style="background-image: linear-gradient(rgba(2, 36, 91, 0.85), rgba(2, 36, 91, 0.85)), url({% static 'img/pro-inner-title.jpg' %});">
+    <div class="container position-relative z-2">
+      <div class="row">
+        <div class="col-12">
+          <div class="breadcrumb-content text-center text-white">
+            <h1 class="display-5 fw-bold mb-4 animate__animated animate__fadeInDown text-white">
+              {% block product_breadcrumb_title %}
+              Product Title
+              {% endblock %}
+            </h1>
+            
+            <nav id="crumbs" aria-label="breadcrumb">
+              <ul class="list-unstyled d-inline-flex m-0 p-0">
+                <li class="position-relative d-inline-flex align-items-center">
+                  <a href="{% url 'index' %}" class="text-white d-inline-flex align-items-center breadcrumb-link">
+                    <i class="fas fa-home me-2"></i>Home
+                  </a>
+                  <i class="fas fa-chevron-right mx-3 text-white"></i>
+                </li>
+                <li class="position-relative d-inline-flex align-items-center">
+                  <span class="text-primary breadcrumb-current">
+                    {% block product_breadcrumb_subtitle %}
+                    Product
+                    {% endblock %}
+                  </span>
+                </li>
+              </ul>
+            </nav>
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Section -->
+  <section class="service-details-area py-5 bg-light">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Main Content -->
+        <div class="col-xl-8 col-lg-7">
+          <div class="card border-0 shadow-lg overflow-hidden">
+            <div class="card-body p-4 p-md-5">
+              <div class="service-details_main_image mb-4 ratio ratio-16x9 rounded overflow-hidden">
+                {% block product_image %}
+                <img src="{% static 'img/product/default.jpg' %}" alt="Product Image" class="img-fluid w-100 h-100 object-fit-cover scale-hover">
+                {% endblock %}
+              </div>
+              <h2 class="mb-4 display-6 fw-bold text-dark position-relative ps-3 border-start border-4 border-primary">
+                {% block product_title %}
+                Default Product Title
+                {% endblock %}
+              </h2>
+              <p class="lead text-secondary mb-4">
+                {% block product_description %}
+                Default product description goes here.
+                {% endblock %}
+              </p>
+              
+              <!-- Technical Specifications Table -->
+              <div class="specifications mt-5">
+                <h3 class="mb-4 pb-2 border-bottom border-2 border-primary d-inline-block">Technical Specifications</h3>
+                <div class="table-responsive-lg border rounded-3 shadow-sm">
+                  {% block product_specifications %}
+                  <table class="table table-hover align-middle mb-0">
+                    <thead class="bg-primary text-white">
+                      <tr>
+                        <th class="w-25 ps-4">Specification</th>
+                        <th class="pe-4">Details</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="ps-4">Example Spec</td>
+                        <td class="pe-4">Example Detail</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  {% endblock %}
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-xl-4 col-lg-5">
+          <div class="sticky-sidebar">
+            <!-- Products Card -->
+            <div class="card card-custom shadow-lg mb-4">
+              <div class="card-header bg-primary text-white fs-5 py-3 border-0 text-center rounded-top">
+                <i class="fas fa-boxes me-2"></i> Our Product Range
+              </div>
+              <div class="list-group list-group-flush">
+                <a href="{% url 'stainless-steel-sheets-plates-coils' %}" class="list-group-item list-group-item-action d-flex align-items-center">
+                  <i class="fas fa-chevron-right text-primary me-2"></i>Sheets, Plates &amp; Coils
+                </a>
+                <a href="{% url 'stainless-steel-pipes-tubes' %}" class="list-group-item list-group-item-action d-flex align-items-center">
+                  <i class="fas fa-chevron-right text-primary me-2"></i>Pipes &amp; Tubes
+                </a>
+                <a href="{% url 'stainless-steel-bars' %}" class="list-group-item list-group-item-action d-flex align-items-center">
+                  <i class="fas fa-chevron-right text-primary me-2"></i>Steel Bars
+                </a>
+                <a href="{% url 'stainless-steel-flanges' %}" class="list-group-item list-group-item-action d-flex align-items-center">
+                  <i class="fas fa-chevron-right text-primary me-2"></i>Steel Flanges
+                </a>
+                <a href="{% url 'stainless-steel-pipe-fittings' %}" class="list-group-item list-group-item-action d-flex align-items-center">
+                  <i class="fas fa-chevron-right text-primary me-2"></i>Pipe Fittings
+                </a>
+                <a href="{% url 'stainless-steel-angles' %}" class="list-group-item list-group-item-action d-flex align-items-center">
+                  <i class="fas fa-chevron-right text-primary me-2"></i>Steel Angles
+                </a>
+                <a href="{% url 'stainless-steel-channels' %}" class="list-group-item list-group-item-action d-flex align-items-center">
+                  <i class="fas fa-chevron-right text-primary me-2"></i>Steel Channels
+                </a>
+                <a href="{% url 'stainless-steel-flats' %}" class="list-group-item list-group-item-action d-flex align-items-center">
+                  <i class="fas fa-chevron-right text-primary me-2"></i>Steel Flats
+                </a>
+                <a href="{% url 'stainless-steel-wires' %}" class="list-group-item list-group-item-action d-flex align-items-center">
+                  <i class="fas fa-chevron-right text-primary me-2"></i>Steel Wires
+                </a>
+              </div>
+            </div>
+
+            <!-- Downloads -->
+            <div class="card card-custom shadow-lg mb-4">
+              <div class="card-header bg-primary text-white text-center fs-5 py-3 border-0 rounded-top">
+                Downloads
+              </div>
+              <div class="card-body text-center">
+                <a href="#" class="btn btn-outline-primary d-block mb-2">
+                  <i class="far fa-file-pdf me-2"></i> Company Profile PDF
+                </a>
+                <a href="#" class="btn btn-outline-primary d-block">
+                  <i class="far fa-file-pdf me-2"></i> Brochure PDF
+                </a>
+              </div>
+            </div>
+
+            <!-- Contact -->
+            <div class="card card-custom shadow-lg text-center bg-light">
+              <div class="card-header bg-gradient-primary text-white text-center fs-5 py-3 border-0 rounded-top">
+                Contact Us
+              </div>
+              <div class="card-body">
+                <i class="fas fa-phone-alt fa-2x text-primary mb-3"></i>
+                <h3 class="h5">Got Questions?</h3>
+                <p class="text-secondary">We are here to help. Reach out for inquiries or assistance.</p>
+                <a href="tel:+917090086060" class="btn btn-primary mt-3">
+                  <i class="fas fa-phone me-2"></i>+91 70900 86060
+                </a>
+                <p class="mt-2">
+                  <a href="mailto:karmamani432@gmail.com" class="text-decoration-none">
+                    karmamani432@gmail.com
+                  </a>
+                </p>
+                <div class="mt-3">
+                  <a href="#" class="text-primary me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                  <a href="#" class="text-primary me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                  <a href="#" class="text-primary"><i class="fab fa-linkedin fa-lg"></i></a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}
+
+<!-- Shared Styles -->
+<style>
+
+
+  /* Breadcrumb Area Adjustments */
+  .breadcrumb-area {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Breadcrumb Content Styling */
+  .breadcrumb-content h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Breadcrumb Links */
+  #crumbs a.breadcrumb-link {
+    /* Override default white to ensure contrast with dark overlay */
+    color: var(--light) !important;  /* using our light color (#F5F5F5) */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    transition: color 0.3s ease;
+  }
+  #crumbs a.breadcrumb-link:hover {
+    color: var(--primary) !important;
+  }
+
+  /* Breadcrumb Current (non-link) */
+  #crumbs .breadcrumb-current {
+    font-weight: 600;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  }
+
+  /* Optional: Adjust spacing between breadcrumb items */
+  #crumbs ul li {
+    margin-right: 10px;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+  }
+  
+
+  /* Adjust the chevron icon if needed */
+  #crumbs i.fa-chevron-right {
+    font-size: 0.9rem;
+    margin: 0 8px;
+  }
+
+
+  /* Adjust product image to display fully */
+  .service-details_main_image img {
+    max-height: 400px;
+    object-fit: contain !important;
+  }
+  .sticky-sidebar {
+    position: sticky;
+    top: 80px;
+  }
+
+  /* Card Custom */
+  .card-custom {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background: #fff;
+    transition: all 0.3s ease;
+  }
+  .card-custom:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+  .card-header {
+    background: var(--primary);
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding: 1rem;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .list-group-item {
+    border: none;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    color: var(--dark);
+    transition: all 0.3s ease;
+  }
+  .list-group-item:hover {
+    background: rgba(var(--primary-rgb), 0.1);
+    color: var(--primary);
+    padding-left: 1.5rem;
+  }
+
+  .btn-outline-primary {
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    transition: all 0.3s ease;
+  }
+  .btn-outline-primary:hover {
+    background: var(--primary);
+    color: white;
+  }
+
+  .contact-card {
+    background: var(--light);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+  .contact-card i {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+  }
+  .contact-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .contact-card .btn {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .mb-5 { margin-bottom: 3rem !important; }
+  .mb-4 { margin-bottom: 2rem !important; }
+  .mb-3 { margin-bottom: 1.5rem !important; }
+  .mb-2 { margin-bottom: 1rem !important; }
+  .mb-1 { margin-bottom: 0.5rem !important; }
+
+  /* Additional shared styles from your CSS (tables, navbar, etc.) */
+  .table {
+    --bs-table-striped-bg: rgba(255, 94, 20, 0.05);
+    --bs-table-hover-bg: rgba(255, 94, 20, 0.1);
+    border-color: rgba(2, 36, 91, 0.1);
+  }
+  .table thead {
+    background: var(--primary);
+    font-weight: 600;
+  }
+  .table th {
+    border-color: rgba(2, 36, 91, 0.1);
+  }
+  .table-striped>tbody>tr:nth-child(odd)>* {
+    background-color: var(--bs-table-striped-bg);
+  }
+  .table-hover>tbody>tr:hover>* {
+    background-color: var(--bs-table-hover-bg);
+  }
+  /* ... include any additional global CSS as needed ... */
+  
+  /* Responsive Adjustments */
+  @media (max-width: 767.98px) {
+    .resource-btn { padding: 1rem; }
+    .resource-btn .fa-file-pdf { font-size: 1.5rem; }
+  }
+  @media (max-width: 575.98px) {
+    .btn-lg { padding: 0.75rem 1rem; font-size: 1rem; }
+  }
+</style>

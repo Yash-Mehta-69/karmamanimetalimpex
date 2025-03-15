@@ -1,0 +1,36 @@
+
+<!-- Navbar & Hero Start -->
+{% load static %}
+<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-0 pe-5">
+    <a href="{% url 'index' %}" class="navbar-brand ps-5 me-0">
+        {% comment %} <h1 class="text-white m-0">Industro</h1> {% endcomment %}
+        <img src="{% static 'img/logo.png' %}" alt="Logo" class="img-fluid" style="height: 50px;">
+    </a>
+    <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <a href="{% url 'index' %}" class="nav-item nav-link active">Home</a>
+            <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
+            <a href="{% url 'applications' %}" class="nav-item nav-link">Applications</a>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Products</a>
+                <div class="dropdown-menu bg-light m-0">
+                    <a href="{% url 'stainless-steel-sheets-plates-coils' %}" class="dropdown-item">Stainless Steel Sheets, Plates & Coils</a>
+                    <a href="{% url 'stainless-steel-pipes-tubes' %}" class="dropdown-item">Stainless Steel Pipes & Tubes</a>
+                    <a href="{% url 'stainless-steel-bars' %}" class="dropdown-item">Stainless Steel Bars</a>
+                    <a href="{% url 'stainless-steel-flanges' %}" class="dropdown-item">Stainless Steel Flanges</a>
+                    <a href="{% url 'stainless-steel-pipe-fittings' %}" class="dropdown-item">Stainless Steel Pipe Fittings</a>
+                    <a href="{% url 'stainless-steel-angles' %}" class="dropdown-item">Stainless Steel Angles</a>
+                    <a href="{% url 'stainless-steel-channels' %}" class="dropdown-item">Stainless Steel Channels</a>
+                    <a href="{% url 'stainless-steel-flats' %}" class="dropdown-item">Stainless Steel Flats</a>
+                    <a href="{% url 'stainless-steel-wires' %}" class="dropdown-item">Stainless Wires</a>
+                </div>
+            </div>
+            <a href="{% url 'weight-calculation-formula' %}" class="nav-item nav-link">Weight Calculations</a>
+        </div>
+        <a href="{% url 'contact-us' %}" class="btn btn-primary px-3 d-none d-lg-block">Contact Us</a>
+    </div>
+</nav>
+<!-- Navbar & Hero End -->  

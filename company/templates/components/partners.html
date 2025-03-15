@@ -1,0 +1,29 @@
+{% load static %}
+<!-- Clients Start -->
+<section class="clients my-5">
+    <div class="container my-5">
+        <!-- Section Heading -->
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold text-primary mb-3">
+                Trusted by Industry Leaders
+            </h2>
+            <p class="lead text-light">
+                Partnering with global giants in metal and manufacturing industries
+            </p>
+        </div>
+
+        <!-- Client Logos Grid -->
+        <div class="row justify-content-center">
+            {% for i in "12345678" %}
+            <div class="col-6 col-md-4 col-lg-2 d-flex align-items-center justify-content-center">
+                <div class="client-logo-box">
+                    <img src="{% static 'img/logos/'|add:i|add:'.jpg' %}" 
+                         class="img-fluid" 
+                         alt="Partner Logo {{ i }}">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- Clients End -->

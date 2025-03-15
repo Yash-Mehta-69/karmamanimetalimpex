@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Weight Calculation Section -->
+<section class="container-fluid py-5" style="background: rgba(2, 36, 91, 0.03);">
+    <div class="container">
+        <div class="section-title text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 700px;">
+            <h1 class="display-5 mb-4">
+                Weight Calculation Formulas
+            </h1>
+            <p class="fw-medium text-uppercase text-primary mb-2">Precision Engineering Calculations</p>
+        </div>
+
+        <div class="row g-5 justify-content-center">
+            <div class="col-xl-10">
+                <div class="card border-0 shadow-lg wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="card-body p-xl-5 p-4">
+                        <div class="table-responsive">
+                            <table class="table table-striped align-middle mb-0">
+                                <thead class="bg-primary text-white">
+                                    <tr>
+                                        <th class="w-25 py-3 border-0"><i class="fas fa-cube me-2"></i>Material/Component</th>
+                                        <th class="py-3 border-0"><i class="fas fa-calculator me-2"></i>Calculation Formula</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-bottom border-light">
+                                        <td class="fw-bold bg-light">Lead Pipe</td>
+                                        <td>Calculation of S.S.Sheets, Circle, Pipes, Round Bar & Flat Bar</td>
+                                    </tr>
+                                    <tr class="border-bottom border-light">
+                                        <td class="fw-bold bg-light">S.S. Sheets & Plates</td>
+                                        <td>
+                                            <span class="text-primary">• Metric:</span> Dia (mm) × Dia (mm) × Thick (mm) / 160 = Gms. Per PC<br>
+                                            <span class="text-primary">• Imperial:</span> Dia (mm) × Dia (mm) × Thick (mm) × 0.00000063 = Kg. Per PC
+                                        </td>
+                                    </tr>
+                                    <tr class="border-bottom border-light">
+                                        <td class="fw-bold bg-light">S.S. Pipe</td>
+                                        <td>
+                                            <span class="text-primary">• Weight per Meter:</span> (O.D. - W.Thick) × W.Thick × 0.0248<br>
+                                            <span class="text-primary">• Alternate Formula:</span> (O.D. - W.Thick) × W.Thick × 0.00758
+                                        </td>
+                                    </tr>
+                                    <tr class="border-bottom border-light">
+                                        <td class="fw-bold bg-light">S.S. Round Bar</td>
+                                        <td>
+                                            <span class="text-primary">• Per Meter:</span> Dia (mm) × Dia (mm) × 0.00623 = Wt. Per. Mtr.<br>
+                                            <span class="text-primary">• Per Feet:</span> Dia (mm) × Dia (mm) × 0.0019 = Wt. Per. Feet.
+                                        </td>
+                                    </tr>
+                                    <tr class="border-bottom border-light">
+                                        <td class="fw-bold bg-light">S.S. Square Bar</td>
+                                        <td>
+                                            <span class="text-primary">• Per Meter:</span> Dia (mm) × Dia (mm) × 0.00788 = Wt. Per. Mtr<br>
+                                            <span class="text-primary">• Per Feet:</span> Dia (mm) × Dia (mm) × 0.0024 = Wt.Per. Feet.
+                                        </td>
+                                    </tr>
+                                    <tr class="border-bottom border-light">
+                                        <td class="fw-bold bg-light">S.S. Hexagonal Bar</td>
+                                        <td>
+                                            <span class="text-primary">• Per Meter:</span> Dia (mm) × Dia (mm) × 0.00680 = Wt. Per.Mtr<br>
+                                            <span class="text-primary">• Per Feet:</span> Width (mm) × Dia (mm) × 0.002072 = Wt. Per Feet
+                                        </td>
+                                    </tr>
+                                    <tr class="border-bottom border-light">
+                                        <td class="fw-bold bg-light">S.S. Flat Bar</td>
+                                        <td>
+                                            <span class="text-primary">• Per Meter:</span> Width (mm) × Thick (mm) × 0.00798 = Wt.Per Mtr.<br>
+                                            <span class="text-primary">• Per Feet:</span> Width (mm) × Thick (mm) × 0.00243 = Wt.Per Feet.
+                                        </td>
+                                    </tr>
+                                    <tr class="border-bottom border-light">
+                                        <td class="fw-bold bg-light">Brass/Copper Pipe</td>
+                                        <td>
+                                            <span class="text-primary">• Formula 1:</span> (O.D. - Thick) × Thick × 0.0260 = Wt. Per Mtr.<br>
+                                            <span class="text-primary">• Formula 2:</span> (O.D. - Wt) × Wt × 0.0345 = Wt. Per Mtr.
+                                        </td>
+                                    </tr>
+                                    <tr class="border-bottom border-light">
+                                        <td class="fw-bold bg-light">Aluminium Pipe</td>
+                                        <td>
+                                            (O.D. - Thick) × Thick × 0.0083 = Wt.Per. Mtr.
+                                        </td>
+                                    </tr>
+                                    <tr class="border-bottom border-light">
+                                        <td class="fw-bold bg-light">Aluminium Sheet</td>
+                                        <td>
+                                            Length (Mtr) × Width (Mtr) × Thick (mm) × 2.69 = Wt.Per PC<br>
+                                            Weight of Conversion of Mtr to Feet<br>
+                                            Wt of 1 Mtr. 3.2808 = Wt.Per Feet.
+                                        </td>
+                                    </tr>
+                                    <tr class="border-bottom border-light">
+                                        <td class="fw-bold bg-light">Barlow’s Formula</td>
+                                        <td>
+                                            <div class="text-primary mb-2">P = 2ST/D or S = DP/2t or D = 2st/p</div>
+                                            <div class="bg-light p-3 rounded">
+                                                <small class="text-muted d-block mb-1">Where:</small>
+                                                <small class="d-block">P = Bursting Pressure (psi)</small>
+                                                <small class="d-block">S = Tensile Strength</small>
+                                                <small class="d-block">T = Wall Thickness (inches)</small>
+                                                <small class="d-block">D = Outside diameter (inches)</small>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+<style>
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(2, 36, 91, 0.03);
+}
+
+.table thead th {
+    border-bottom: 2px solid rgba(255,255,255,0.2) !important;
+}
+
+.table td, .table th {
+    vertical-align: middle;
+    padding: 1.25rem;
+    border-color: rgba(2, 36, 91, 0.1);
+}
+
+.bg-light {
+    background-color: #f7f7f7 !important;
+}
+
+.card {
+    border-radius: 15px;
+    overflow: hidden;
+}
+</style>
