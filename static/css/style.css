@@ -243,9 +243,6 @@ h6,
     color: var(--light);
 }
 
-/* .nav-link.dropdown-toggle {
-    color: var(--dark) !important;
-} */
 
 .nav-link.dropdown-toggle:hover {
     color: var(--primary) !important;
