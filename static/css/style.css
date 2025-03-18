@@ -208,7 +208,7 @@ h6,
 .navbar .navbar-nav .nav-link {
     margin-right: 35px;
     padding: 20px 0;
-    color: var(--dark);
+    color: var(--primary);
     font-size: 18px;
     font-weight: 500;
     outline: none;
@@ -243,9 +243,9 @@ h6,
     color: var(--light);
 }
 
-.nav-link.dropdown-toggle {
+/* .nav-link.dropdown-toggle {
     color: var(--dark) !important;
-}
+} */
 
 .nav-link.dropdown-toggle:hover {
     color: var(--primary) !important;

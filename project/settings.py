@@ -123,8 +123,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "static"
-STATICFILES_DIRS = [BASE_DIR / "static"]
+
+# Directory where `collectstatic` will collect static files for production
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# Directories where Django will search for additional static files (except STATIC_ROOT)
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
 
 
 
