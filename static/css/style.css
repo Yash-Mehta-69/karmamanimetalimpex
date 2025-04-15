@@ -842,6 +842,39 @@ h6,
 }
 
 /* Logo Box */
+
+/* Center the download button */
+.client-logo-box a {
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* Adjust logo grid for smaller screens */
+@media (max-width: 768px) {
+    .client-logo-box {
+        margin-bottom: 20px;
+    }
+
+    .clients .row {
+        justify-content: center;
+    }
+
+    .client-logo-box img {
+        max-width: 80%;
+        height: auto;
+    }
+}
+
+/* Adjust logo grid for very small screens */
+@media (max-width: 576px) {
+    .client-logo-box img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+
 .clients .client-logo-box {
     display: flex;
     justify-content: center;

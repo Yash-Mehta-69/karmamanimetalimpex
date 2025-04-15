@@ -1,3 +1,4 @@
+{% load static %}
 <!-- Facts Start -->
 <div class="container-fluid facts my-5 p-5">
     <div class="row g-5 justify-content-center">
@@ -12,20 +13,24 @@
 
         <!-- ISO Certified -->
         <div class="col-md-6 col-xl-2 wow fadeIn" data-wow-delay="0.3s">
-            <div class="text-center border p-4">
-                <i class="fa fa-certificate fa-3x text-white mb-3"></i>
-                <h2 class="h1 text-primary mb-0">ISO</h2> <!-- Changed to h2 with h1 size -->
-                <span class="fs-5 fw-semi-bold text-white">9001:2015 Certified</span>
-            </div>
+            <a href="{% static 'pdfs/iso_certification.pdf' %}" download class="text-decoration-none">
+                <div class="text-center border p-4">
+                    <i class="fa fa-certificate fa-3x text-white mb-3"></i>
+                    <h2 class="h1 text-primary mb-0">ISO</h2> <!-- Changed to h2 with h1 size -->
+                    <span class="fs-5 fw-semi-bold text-white">9001:2015 Certified</span>
+                </div>
+            </a>
         </div>
 
         <!-- Udyam Registered -->
         <div class="col-md-6 col-xl-2 wow fadeIn" data-wow-delay="0.5s">
-            <div class="text-center border p-4">
-                <i class="fa fa-file-contract fa-3x text-white mb-3"></i>
-                <h2 class="h1 text-primary mb-0">UDYAM</h2> <!-- Changed to h2 with h1 size -->
-                <span class="fs-5 fw-semi-bold text-white">Registered Enterprise</span>
-            </div>
+            <a href="{% static 'pdfs/udyam_registration.pdf' %}" download class="text-decoration-none">
+                <div class="text-center border p-4">
+                    <i class="fa fa-file-contract fa-3x text-white mb-3"></i>
+                    <h2 class="h1 text-primary mb-0">UDYAM</h2> <!-- Changed to h2 with h1 size -->
+                    <span class="fs-5 fw-semi-bold text-white">Registered Enterprise</span>
+                </div>
+            </a>
         </div>
 
         <!-- GST Verified -->
@@ -39,11 +44,13 @@
 
         <!-- MSME Certified -->
         <div class="col-md-6 col-xl-2 wow fadeIn" data-wow-delay="0.9s">
-            <div class="text-center border p-4">
-                <i class="fa fa-award fa-3x text-white mb-3"></i>
-                <h2 class="h1 text-primary mb-0">MSME</h2> <!-- Changed to h2 with h1 size -->
-                <span class="fs-5 fw-semi-bold text-white">Recognized Enterprise</span>
-            </div>
+            <a href="{% static 'pdfs/msme_certification.pdf' %}" download class="text-decoration-none">
+                <div class="text-center border p-4">
+                    <i class="fa fa-award fa-3x text-white mb-3"></i>
+                    <h2 class="h1 text-primary mb-0">MSME</h2> <!-- Changed to h2 with h1 size -->
+                    <span class="fs-5 fw-semi-bold text-white">Recognized Enterprise</span>
+                </div>
+            </a>
         </div>
     </div>
 </div>

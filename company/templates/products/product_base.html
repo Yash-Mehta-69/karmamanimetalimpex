@@ -2,7 +2,6 @@
 {% load static %}
 
 {% block content %}
-<main>
   <!-- Breadcrumb Section -->
   <section class="breadcrumb-area bg-dark py-5 position-relative" 
            style="background-image: linear-gradient(rgba(2, 36, 91, 0.85), rgba(2, 36, 91, 0.85)), url({% static 'img/pro-inner-title.jpg' %});">
@@ -48,7 +47,7 @@
         <!-- Main Content -->
         <div class="col-xl-8 col-lg-7">
           <div class="card border-0 shadow-lg overflow-hidden">
-            <div class="card-body p-4 p-md-5">
+            <div id="pdf-content" class="card-body p-4 p-md-5">
               <div class="service-details_main_image mb-4 ratio ratio-16x9 rounded overflow-hidden">
                 {% block product_image %}
                 <img src="{% static 'img/product/default.jpg' %}" alt="Product Image" class="img-fluid w-100 h-100 object-fit-cover scale-hover">
@@ -69,22 +68,24 @@
               <div class="specifications mt-5">
                 <h3 class="mb-4 pb-2 border-bottom border-2 border-primary d-inline-block">Technical Specifications</h3>
                 <div class="table-responsive-lg border rounded-3 shadow-sm">
-                  {% block product_specifications %}
-                  <table class="table table-hover align-middle mb-0">
-                    <thead class="bg-primary text-white">
-                      <tr>
-                        <th class="w-25 ps-4">Specification</th>
-                        <th class="pe-4">Details</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td class="ps-4">Example Spec</td>
-                        <td class="pe-4">Example Detail</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  {% endblock %}
+                  <div id="product-specifications">
+                    {% block product_specifications %}
+                    <table class="table table-hover align-middle mb-0">
+                      <thead class="bg-primary text-white">
+                        <tr>
+                          <th class="w-25 ps-4">Specification</th>
+                          <th class="pe-4">Details</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="ps-4">Example Spec</td>
+                          <td class="pe-4">Example Detail</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    {% endblock %}
+                  </div>
                 </div>
               </div>
               
@@ -132,7 +133,7 @@
             </div>
 
             <!-- Downloads -->
-            <div class="card card-custom shadow-lg mb-4">
+            {% comment %} <div class="card card-custom shadow-lg mb-4">
               <div class="card-header bg-primary text-white text-center fs-5 py-3 border-0 rounded-top">
                 Downloads
               </div>
@@ -143,6 +144,24 @@
                 <a href="#" class="btn btn-outline-primary d-block">
                   <i class="far fa-file-pdf me-2"></i> Brochure PDF
                 </a>
+
+                <button id="download-pdf" class="btn btn-outline-primary d-block mb-2" 
+                        data-product-slug="{{ request.resolver_match.url_name }}">
+                  <i class="far fa-file-pdf me-2"></i> Download Specifications PDF
+                </button>
+              </div>
+            </div> {% endcomment %}
+
+            <!-- filepath: c:\Users\yashm\OneDrive\Desktop\MAIN\PROJECTS\KARMAMANI METAL IMPEX\karmamanimetalimpex\company\templates\products\product_base.html -->
+            <div class="card card-custom shadow-lg mb-4">
+              <div class="card-header bg-primary text-white text-center fs-5 py-3 border-0 rounded-top">
+                  Downloads
+              </div>
+              <div class="card-body text-center">
+                <button id="download-pdf" class="btn btn-outline-primary d-block mb-2" 
+                        data-product-slug="{{ request.resolver_match.url_name }}">
+                  <i class="far fa-file-pdf me-2"></i> Download Specifications PDF
+                </button>
               </div>
             </div>
 
@@ -164,9 +183,9 @@
                   </a>
                 </p>
                 <div class="mt-3">
-                  <a href="#" class="text-primary me-3"><i class="fab fa-facebook fa-lg"></i></a>
-                  <a href="#" class="text-primary me-3"><i class="fab fa-twitter fa-lg"></i></a>
-                  <a href="#" class="text-primary"><i class="fab fa-linkedin fa-lg"></i></a>
+                  <a href="https://www.facebook.com/profile.php?id=61575242431450" target="_blank" class="text-primary me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                  {% comment %} <a href="#" class="text-primary me-3"><i class="fab fa-twitter fa-lg"></i></a> {% endcomment %}
+                  <a href="https://www.instagram.com/karmamanimetalimpex.in/" target="_blank" class="text-primary"><i class="fab fa-instagram fa-lg"></i></a>
                 </div>
               </div>
             </div>
@@ -176,7 +195,55 @@
       </div>
     </div>
   </section>
-</main>
+{% endblock %}
+
+{% block extra_scripts %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <!-- html2pdf bundles html2canvas + jsPDF for you -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
+
+
+  <script>
+    document.getElementById('download-pdf').addEventListener('click', function(e) {
+      e.preventDefault();
+      const element = document.getElementById('pdf-content');
+  
+      // html2pdf options
+      const opt = {
+        margin:       [0.5, 0.5, 0.5, 0.5],        // inches on each side
+        filename:     'product-specifications.pdf',
+        image:        { type: 'png', quality: 1 },
+        html2canvas:  { scale: 2, useCORS: true },
+        jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+      };
+  
+      // This call will render, generate, AND auto-download:
+      html2pdf().set(opt).from(element).save();
+    });
+  </script>
+    
+    <!-- Add this style block in your product_base.html -->
+    <style id="product-print-styles">
+        @media print {
+            .sticky-sidebar, 
+            .breadcrumb-area,
+            .btn,
+            .card-header {
+                display: none !important;
+            }
+            
+            .service-details_main_image img {
+                max-width: 50% !important;
+                margin: 0 auto;
+            }
+            
+            .table {
+                page-break-inside: avoid;
+            }
+        }
+  </style>
 {% endblock %}
 
 <!-- Shared Styles -->

@@ -81,7 +81,8 @@
             <div class="col-lg-7 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="contact-form bg-light rounded p-4 p-lg-5 h-100">
                     <h2 class="text-dark mb-5">Get a FREE Quote</h2>
-                    <form>
+                    {% comment %} <form method="POST" action="">
+                        {% csrf_token %}
                         <div class="row g-4">
                             <div class="col-12">
                                 <div class="form-group">
@@ -117,7 +118,55 @@
                                 </button>
                             </div>
                         </div>
+                    </form> {% endcomment %}
+
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <div class="row g-4">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label text-dark fw-medium">Name <span class="text-primary">*</span></label>
+                                    <input type="text" name="name" class="form-control form-control-lg" placeholder="Enter your name" required>
+                                </div>
+                            </div>
+                    
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label text-dark fw-medium">Mobile <span class="text-primary">*</span></label>
+                                    <input type="tel" name="mobile" class="form-control form-control-lg" placeholder="Enter your mobile number" required>
+                                </div>
+                            </div>
+                    
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label text-dark fw-medium">Email <span class="text-primary">*</span></label>
+                                    <input type="email" name="email" class="form-control form-control-lg" placeholder="Enter your email" required>
+                                </div>
+                            </div>
+                    
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label text-dark fw-medium">Message <span class="text-primary">*</span></label>
+                                    <textarea name="message" class="form-control form-control-lg" rows="6" placeholder="Enter your message" required></textarea>
+                                </div>
+                            </div>
+                    
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary w-100 py-3 fs-5 fw-medium">
+                                    <i class="fas fa-paper-plane me-2"></i>Send Message
+                                </button>
+                            </div>
+                        </div>
                     </form>
+                    <!-- Add this at the top of your template to show success message -->
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </div>
         </div>

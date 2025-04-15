@@ -15,11 +15,13 @@
         <!-- Client Logos Grid -->
         <div class="row justify-content-center">
             {% for i in "12345678" %}
-            <div class="col-6 col-md-4 col-lg-2 d-flex align-items-center justify-content-center">
-                <div class="client-logo-box">
-                    <img src="{% static 'img/logos/'|add:i|add:'.jpg' %}" 
-                         class="img-fluid" 
-                         alt="Partner Logo {{ i }}">
+            <div class="col-6 col-md-4 col-lg-2 d-flex align-items-center justify-content-center mb-4">
+                <div class="client-logo-box text-center">
+                    <a href="{% static 'img/logos/'|add:i|add:'.jpg' %}" download>
+                        <img src="{% static 'img/logos/'|add:i|add:'.jpg' %}" 
+                             class="img-fluid" 
+                             alt="Partner Logo {{ i }}">
+                    </a>
                 </div>
             </div>
             {% endfor %}

@@ -17,10 +17,10 @@ urlpatterns = [
     path('stainless-steel-angles/', views.stainless_steel_angles, name='stainless-steel-angles'),
     path('stainless-steel-channels/', views.stainless_steel_channels, name='stainless-steel-channels'),
     path('stainless-steel-flats/', views.stainless_steel_flats, name='stainless-steel-flats'), 
-    path('stainless-steel-wires/', views.stainless_steel_wires, name='stainless-steel-wires')
-             
-    
-    
+    path('stainless-steel-wires/', views.stainless_steel_wires, name='stainless-steel-wires'),
+     # Updated PDF generation URL (uses product_name slug)
+    # path('product/<str:product_name>/download-pdf/', views.generate_product_pdf, name='generate_product_pdf'),
+
 
 
 
