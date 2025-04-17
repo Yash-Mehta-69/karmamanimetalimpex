@@ -822,6 +822,86 @@ h6,
 }
 
 
+
+
+
+/*** Certificates Section ***/
+.certificate-card {
+    background: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition: all var(--transition-speed) ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 !important; /* Remove the padding from the card itself */
+}
+
+.certificate-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.certificate-img-container {
+    overflow: hidden;
+    height: 600px; /* Increased height for better A4 display */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fa;
+    padding: 10px;
+}
+
+.certificate-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform var(--transition-speed) ease;
+}
+
+.certificate-card:hover .certificate-img {
+    transform: scale(1.03);
+}
+
+.certificate-text {
+    padding: 20px;
+    text-align: center;
+    background: white;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    font-weight: 500;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1199.98px) {
+    .certificate-img-container {
+        height: 300px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .certificate-img-container {
+        height: 250px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .certificate-img-container {
+        height: 200px;
+    }
+    
+    .certificate-text {
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+}
+/* Logo Box */
+
+
 .clients {
     position: relative;
     margin: 6rem 0;
@@ -841,11 +921,12 @@ h6,
     text-align: center;
 }
 
-/* Logo Box */
 
-/* Center the download button */
-.client-logo-box a {
-    display: inline-block;
+/* Center the logo box and logos */
+.client-logo-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     margin: 0 auto;
 }
@@ -857,7 +938,7 @@ h6,
     }
 
     .clients .row {
-        justify-content: center;
+        justify-content: center !important; /* Ensure the row centers its content */
     }
 
     .client-logo-box img {
@@ -866,7 +947,7 @@ h6,
     }
 }
 
-/* Adjust logo grid for very small screens */
+/* Adjust logo size for very small screens */
 @media (max-width: 576px) {
     .client-logo-box img {
         max-width: 100%;
@@ -874,64 +955,16 @@ h6,
     }
 }
 
-
-.clients .client-logo-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: transparent;
-    border: none;
-    padding: 5px; /* Reduced padding to bring logos closer */
-    height: 140px; /* Increased height for larger logos */
-    width: 100%;
-}
-
-/* Logo Styling */
+/* Add hover effect for logos */
 .clients img {
-    max-width: 90%;
-    max-height: 120px; /* Increased logo size */
-    filter: brightness(0.95);
-    transition: 0.3s ease-in-out;
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .clients img:hover {
-    filter: brightness(1);
     transform: scale(1.1);
+    filter: brightness(1.2);
 }
 
-/* Responsive Adjustments */
-@media (max-width: 992px) { /* Tablet Screens */
-    .clients .client-logo-box {
-        height: 120px;
-        padding: 4px;
-    }
-    .clients img {
-        max-height: 100px;
-        max-width: 85%;
-    }
-}
-
-@media (max-width: 768px) { /* Mobile Screens */
-    .clients .client-logo-box {
-        height: 100px;
-        padding: 3px;
-    }
-    .clients img {
-        max-height: 80px;
-        max-width: 80%;
-    }
-}
-
-@media (max-width: 576px) { /* Small Phones */
-    .clients .client-logo-box {
-        height: auto;
-        padding: 2px;
-    }
-    .clients img {
-        max-width: 85%;
-        max-height: 70px;
-    }
-}
 
 
 

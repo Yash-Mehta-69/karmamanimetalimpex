@@ -9,6 +9,47 @@ from django.template.loader import render_to_string
 
 
 def index(request):
+    if request.method == 'POST':
+        # Get form data
+        name = request.POST.get('name', '').strip()
+        mobile = request.POST.get('mobile', '').strip()
+        email = request.POST.get('email', '').strip()
+        message = request.POST.get('message', '').strip()
+        
+        # Validate required fields
+        if not all([name, mobile, email, message]):
+            messages.error(request, 'Please fill in all required fields.')
+            return HttpResponseRedirect(request.path)
+        
+        # Compose email content
+        subject = f"New Contact Form Submission from {name}"
+        email_message = f"""
+        Name: {name}
+        Mobile: {mobile}
+        Email: {email}
+        
+        Message:
+        {message}
+        """
+        
+        try:
+            # Send email using SMTP
+            send_mail(
+                subject=subject,
+                message=email_message,
+                from_email=settings.DEFAULT_FROM_EMAIL,  # Use your configured email
+                recipient_list=['karmamani432@gmail.com'],  # Send to yourself karmamani432
+                fail_silently=False,
+            )
+            
+            messages.success(request, 'Thank you for contacting us! We will get back to you soon.')
+            return HttpResponseRedirect(request.path)
+        
+        except Exception as e:
+            # Log the error for debugging
+            print(f"Error sending email: {str(e)}")
+            messages.error(request, 'There was an error sending your message. Please try again later.')
+            return HttpResponseRedirect(request.path)
     return render(request, 'pages/index.html')
 
 def about(request):
@@ -50,7 +91,7 @@ def contact(request):
                 subject=subject,
                 message=email_message,
                 from_email=settings.DEFAULT_FROM_EMAIL,  # Use your configured email
-                recipient_list=[settings.EMAIL_HOST_USER],  # Send to yourself
+                recipient_list=['karmamani432@gmail.com'],  # Send to yourself
                 fail_silently=False,
             )
             

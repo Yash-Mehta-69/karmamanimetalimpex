@@ -121,6 +121,15 @@
                     </form> {% endcomment %}
 
                     <form method="POST" action="">
+                        <!-- Add this at the top of your template to show success message -->
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ message }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
                         {% csrf_token %}
                         <div class="row g-4">
                             <div class="col-12">
@@ -158,15 +167,7 @@
                             </div>
                         </div>
                     </form>
-                    <!-- Add this at the top of your template to show success message -->
-                    {% if messages %}
-                        {% for message in messages %}
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                {{ message }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        {% endfor %}
-                    {% endif %}
+                    
                 </div>
             </div>
         </div>
