@@ -57,9 +57,9 @@ def about(request):
 
 def vcard(request):
     # return render(request, 'pages/vcard_chatgpt.html')
-    return render(request, 'pages/vcard_deepseek.html')
+    # return render(request, 'pages/vcard_deepseek.html')
     # return render(request, 'pages/vcard_grok.html')
-    # return render(request, 'pages/vcard.html')
+    return render(request, 'pages/vcard.html')
 def applications(request):
     return render(request, 'pages/applications.html')
 
