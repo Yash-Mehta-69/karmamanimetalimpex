@@ -55,6 +55,11 @@ def index(request):
 def about(request):
     return render(request, 'pages/about.html')
 
+def vcard(request):
+    # return render(request, 'pages/vcard_chatgpt.html')
+    return render(request, 'pages/vcard_deepseek.html')
+    # return render(request, 'pages/vcard_grok.html')
+    # return render(request, 'pages/vcard.html')
 def applications(request):
     return render(request, 'pages/applications.html')
 
@@ -110,32 +115,41 @@ def custom_404(request, exception):
     return render(request, 'pages/404.html', status=404)
 
 def stainless_steel_sheets_plates_coils(request):
-    return render(request, 'products/stainless_steel_sheets_plates_coils.html')
+    product_name = 'stainless_steel_sheets_plates_coils'
+    return render(request, 'products/stainless_steel_sheets_plates_coils.html', {'product_name': product_name})
 
 def stainless_steel_pipes_tubes(request):
-    return render(request, 'products/stainless_steel_pipes_tubes.html')
+    product_name = 'Stainless Steel Pipes Tubes'
+    return render(request, 'products/stainless_steel_pipes_tubes.html', {'product_name': product_name})
 
 def stainless_steel_bars(request):
-    return render(request, 'products/stainless_steel_bars.html')
+    product_name = 'stainless_steel_bars'
+    return render(request, 'products/stainless_steel_bars.html', {'product_name': product_name})
 
 def stainless_steel_flanges(request):
-    return render(request, 'products/stainless_steel_flanges.html')
+    product_name = 'stainless_steel_flanges'
+    return render(request, 'products/stainless_steel_flanges.html', {'product_name': product_name})
 
 
 def stainless_steel_pipe_fittings(request):
-    return render(request, 'products/stainless_steel_pipe_fittings.html')
+    product_name = 'stainless_steel_pipe_fittings'
+    return render(request, 'products/stainless_steel_pipe_fittings.html', {'product_name': product_name})
 
 def stainless_steel_angles(request):
-    return render(request, 'products/stainless_steel_angles.html')
+    product_name = 'stainless_steel_angles'
+    return render(request, 'products/stainless_steel_angles.html', {'product_name': product_name})
 
     
 def stainless_steel_channels(request):
-    return render(request, 'products/stainless_steel_channels.html')
+    product_name = 'stainless_steel_channels'
+    return render(request, 'products/stainless_steel_channels.html', {'product_name': product_name})
 
 def stainless_steel_flats(request):
-    return render(request, 'products/stainless_steel_flats.html')
+    product_name = 'stainless_steel_flats'
+    return render(request, 'products/stainless_steel_flats.html', {'product_name': product_name})
 
 def stainless_steel_wires(request):
-    return render(request, 'products/stainless_steel_wires.html')
+    product_name = 'stainless_steel_wires'
+    return render(request, 'products/stainless_steel_wires.html', {'product_name': product_name})
 
 

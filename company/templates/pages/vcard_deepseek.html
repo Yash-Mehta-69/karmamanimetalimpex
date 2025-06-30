@@ -1,0 +1,1183 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Karmamani Metal Impex - Digital Business Card</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="{% static 'img/favicon.ico' %}" rel="icon">
+  <style>
+    :root {
+      --primary: #FF5E14;
+      --primary-dark: #e65312;
+      --secondary: #02245B;
+      --secondary-light: #1a3d7c;
+      --light: #f9fafc;
+      --light-gray: #eef2f7;
+      --medium-gray: #d1d9e6;
+      --dark: #212529;
+      --gray: #6c757d;
+      --border-radius: 16px;
+      --border-radius-lg: 24px;
+      --box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      --box-shadow-hover: 0 12px 24px rgba(0,0,0,0.15);
+      --transition: all 0.3s ease;
+    }
+    
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+    
+    body {
+      font-family: 'Rubik', sans-serif;
+      background: linear-gradient(135deg, #f8fafd 0%, #e9eff7 100%);
+      color: var(--dark);
+      padding: 20px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    
+    .vcard-container {
+      max-width: 1200px;
+      margin: 20px auto;
+      background: #fff;
+      border-radius: var(--border-radius-lg);
+      box-shadow: var(--box-shadow);
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .header {
+      background: linear-gradient(rgba(2,36,91,0.85), rgba(2,36,91,0.85)), url('{% static "img/cover.jpeg" %}');
+      background-size: cover;
+      background-position: center;
+      height: 380px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    
+    .header-content {
+      text-align: center;
+      color: #fff;
+      padding: 0 20px;
+      animation: fadeInUp 0.8s ease-out;
+      z-index: 2;
+    }
+    
+    .header-content h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    
+    .header-content h2 {
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: #FFB185;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .profile-photo-container {
+      position: absolute;
+      bottom: -90px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .profile-image {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 6px solid #fff;
+      object-fit: cover;
+      box-shadow: var(--box-shadow);
+      background: #fff;
+      transition: var(--transition);
+    }
+    
+    .profile-image:hover {
+      transform: scale(1.05);
+    }
+    
+    .profile-section {
+      padding: 120px 20px 30px;
+      text-align: center;
+      background: #fff;
+    }
+    
+    .profile-name {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 5px;
+      letter-spacing: -0.5px;
+    }
+    
+    .profile-title {
+      color: var(--primary);
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    
+    .profile-address {
+      color: var(--gray);
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.8;
+    }
+    
+    .profile-description {
+      max-width: 700px;
+      margin: 0 auto 30px;
+      font-size: 1.1rem;
+      color: #555;
+      line-height: 1.8;
+      padding: 0 20px;
+    }
+    
+    /* Fixed 6-column layout for contact actions */
+    .contact-actions {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 15px;
+      padding: 0 20px 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .contact-action {
+      background: #fff;
+      border: 1px solid var(--medium-gray);
+      padding: 20px 15px;
+      border-radius: var(--border-radius);
+      text-align: center;
+      transition: var(--transition);
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+    
+    .contact-action:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--box-shadow-hover);
+      border-color: var(--primary);
+      background: var(--light-gray);
+    }
+    
+    .contact-action-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 15px;
+      transition: var(--transition);
+    }
+    
+    .contact-action:hover .contact-action-icon {
+      background: var(--secondary);
+      transform: scale(1.05);
+    }
+    
+    .contact-action-icon i {
+      color: #fff;
+      font-size: 26px;
+    }
+    
+    .contact-action-label {
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--secondary);
+    }
+    
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--primary);
+      color: #fff;
+      padding: 16px 42px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      margin: 20px auto 40px;
+      box-shadow: 0 6px 12px rgba(255, 94, 20, 0.25);
+    }
+    
+    .download-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(255, 94, 20, 0.35);
+    }
+    
+    .download-btn i {
+      font-size: 1.4rem;
+    }
+    
+    .section {
+      padding: 50px 20px;
+      border-top: 1px solid #eee;
+      background: var(--light-gray);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .section-title {
+      font-size: 2.2rem;
+      text-align: center;
+      color: var(--secondary);
+      position: relative;
+      margin-bottom: 45px;
+      font-weight: 700;
+    }
+    
+    .section-title::after {
+      content: "";
+      height: 4px;
+      width: 80px;
+      background: var(--primary);
+      border-radius: 3px;
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .bank-details {
+      background: var(--secondary);
+      color: #fff;
+      padding: 30px;
+      border-radius: var(--border-radius);
+      font-size: 1.15rem;
+      text-align: center;
+      max-width: 700px;
+      margin: auto;
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+    }
+    
+    .bank-details:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--box-shadow-hover);
+    }
+    
+    .bank-details p {
+      line-height: 1.8;
+    }
+    
+    /* Improved product grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+      justify-items: center;
+    }
+    
+    .product-card {
+      border: 1px solid #ddd;
+      border-radius: var(--border-radius);
+      background: #fff;
+      overflow: hidden;
+      transition: var(--transition);
+      box-shadow: var(--box-shadow);
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 320px;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--box-shadow-hover);
+      border-color: var(--primary);
+    }
+    
+    .product-image {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      border-bottom: 3px solid var(--primary);
+    }
+    
+    .product-content {
+      padding: 22px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .product-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 12px;
+    }
+    
+    .product-description {
+      font-size: 1rem;
+      color: var(--gray);
+      margin-bottom: 20px;
+      line-height: 1.7;
+      flex-grow: 1;
+    }
+    
+    .product-btn {
+      display: block;
+      background: var(--primary);
+      color: #fff;
+      text-align: center;
+      padding: 14px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      margin-top: auto;
+    }
+    
+    .product-btn:hover {
+      background: var(--primary-dark);
+    }
+    
+    .certifications {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      justify-items: center;
+    }
+    
+    .certificate-card {
+      border: 1px solid #ddd;
+      border-radius: var(--border-radius);
+      background: #fff;
+      overflow: hidden;
+      transition: var(--transition);
+      box-shadow: var(--box-shadow);
+      width: 100%;
+      max-width: 320px;
+    }
+    
+    .certificate-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--box-shadow-hover);
+      border-color: var(--primary);
+    }
+    
+    .certificate-image {
+      width: 100%;
+      height: 240px;
+      object-fit: contain;
+      background: #f5f5f5;
+      border-bottom: 3px solid var(--primary);
+    }
+    
+    .certificate-content {
+      text-align: center;
+      padding: 22px;
+    }
+    
+    .certificate-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 20px;
+    }
+    
+    .certificate-btn {
+      background: var(--primary);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+    }
+    
+    .certificate-btn:hover {
+      background: var(--primary-dark);
+    }
+    
+    .footer {
+      text-align: center;
+      background: var(--secondary);
+      color: #fff;
+      padding: 25px;
+      font-size: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    /* Navigation Menu */
+    .nav-menu {
+      position: sticky;
+      top: 20px;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 50px;
+      padding: 10px;
+      margin: 0 auto 20px;
+      max-width: 800px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: center;
+    }
+    
+    .nav-link {
+      padding: 10px 20px;
+      margin: 0 5px;
+      border-radius: 50px;
+      font-weight: 600;
+      color: var(--secondary);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .nav-link:hover, .nav-link.active {
+      background: var(--primary);
+      color: #fff;
+    }
+    
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateX(-50%) translateY(0px);
+      }
+      50% {
+        transform: translateX(-50%) translateY(-10px);
+      }
+      100% {
+        transform: translateX(-50%) translateY(0px);
+      }
+    }
+    
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* UPDATED SHARE SECTION STYLES */
+    .share-section {
+      background: linear-gradient(135deg, #f0f5ff 0%, #e6eeff 100%);
+      padding: 60px 20px;
+      text-align: center;
+    }
+    
+    .share-container {
+      max-width: 500px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: var(--border-radius-lg);
+      padding: 40px 30px;
+      box-shadow: var(--box-shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .share-title {
+      font-size: 1.8rem;
+      color: var(--secondary);
+      margin-bottom: 25px;
+      font-weight: 700;
+    }
+    
+    .share-subtitle {
+      color: var(--gray);
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+    
+    .qr-container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      margin: 0 auto 25px;
+      padding: 15px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .qr-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    
+    .share-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 25px;
+    }
+    
+    .share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--primary);
+      color: #fff;
+      padding: 14px 32px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 4px 12px rgba(255, 94, 20, 0.3);
+    }
+    
+    .share-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(255, 94, 20, 0.4);
+    }
+    
+    .save-btn {
+      background: var(--secondary);
+      box-shadow: 0 4px 12px rgba(2, 36, 91, 0.2);
+    }
+    
+    .save-btn:hover {
+      background: var(--secondary-light);
+    }
+    
+    .share-btn i {
+      font-size: 1.2rem;
+    }
+    
+    .share-link-container {
+      margin-top: 30px;
+      padding: 15px;
+      background: var(--light);
+      border-radius: var(--border-radius);
+      position: relative;
+    }
+    
+    .share-link-label {
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      background: var(--primary);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    
+    .share-link {
+      font-size: 1rem;
+      color: var(--secondary);
+      word-break: break-all;
+      text-align: center;
+      padding: 8px;
+    }
+    
+    .copy-btn {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--medium-gray);
+      border: none;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .copy-btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .notification {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--secondary);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      font-weight: 500;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .notification.show {
+      opacity: 1;
+    }
+    
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .contact-actions {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .header {
+        height: 320px;
+      }
+      
+      .header-content h1 {
+        font-size: 2.2rem;
+      }
+      
+      .header-content h2 {
+        font-size: 1.2rem;
+      }
+      
+      .profile-image {
+        width: 160px;
+        height: 160px;
+      }
+      
+      .profile-section {
+        padding-top: 100px;
+      }
+      
+      .profile-name {
+        font-size: 2rem;
+      }
+      
+      .contact-actions {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      
+      .nav-menu {
+        flex-wrap: wrap;
+        border-radius: var(--border-radius);
+      }
+      
+      .nav-link {
+        padding: 8px 15px;
+        margin: 5px;
+        font-size: 0.9rem;
+      }
+      
+      .share-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .share-btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .header {
+        height: 280px;
+      }
+      
+      .header-content h1 {
+        font-size: 1.8rem;
+      }
+      
+      .profile-image {
+        width: 140px;
+        height: 140px;
+      }
+      
+      .profile-section {
+        padding-top: 90px;
+      }
+      
+      .profile-name {
+        font-size: 1.7rem;
+      }
+      
+      .profile-title {
+        font-size: 1.2rem;
+      }
+      
+      .contact-actions {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+      }
+      
+      .section {
+        padding: 40px 15px;
+      }
+      
+      .section-title {
+        font-size: 1.7rem;
+      }
+      
+      .nav-menu {
+        top: 10px;
+      }
+      
+      .share-container {
+        padding: 30px 20px;
+      }
+      
+      .share-title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+    <!-- Navigation Menu -->
+    <div class="nav-menu">
+      <a href="#profile" class="nav-link active">Profile</a>
+      <a href="#share" class="nav-link">Share</a>
+      <a href="#bank" class="nav-link">Bank Details</a>
+      <a href="#products" class="nav-link">Products</a>
+      <a href="#certifications" class="nav-link">Certifications</a>
+    </div>
+    
+    <div class="vcard-container">
+        <div class="header">
+          <div class="header-content">
+            <h1>Karmamani Metal Impex</h1>
+            <h2>Quality Steel Solutions</h2>
+          </div>
+          <div class="profile-photo-container">
+            <img src="{% static 'img/photo.png' %}" alt="Profile Photo" class="profile-image">
+          </div>
+        </div>
+        
+        <!-- Profile Section -->
+        <div class="profile-section" id="profile">
+            <h2 class="profile-name">Pringal Shah</h2>
+            <div class="profile-title">Director</div>
+            <div class="profile-address">
+                135/A/2, opp. Kamal Estate, Ajod Dairy Road, Rakhial, Ahmedabad, Gujarat 380023
+            </div>
+            <p class="profile-description">
+                Established in 2008, Karmamani Metal Impex is a premier importer, trader, and supplier of pipes, 
+                MS sheets & beams, seamless tubes, and pipe fittings. We are authorized stockists of M/S Maharashtra 
+                Seamless Limited, The Indian Seamless Metal Tubes Ltd, and Jindal Saw Ltd.
+            </p>
+
+
+            <!-- Download Button -->
+            <div class="download-card">
+              <a class="download-btn" href="{% static 'media/pringalshah.vcf' %}" download>
+                <i class="fas fa-download"></i> Save Contact
+              </a>
+            </div>
+            
+            <!-- Contact Actions -->
+            <div class="contact-actions">
+                <div class="contact-action" onclick="window.location.href='tel:+917090086060'">
+                    <div class="contact-action-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-action-label">Call</div>
+                </div>
+                
+                <div class="contact-action" onclick="window.open('https://www.karmamanimetalimpex.in/')">
+                    <div class="contact-action-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="contact-action-label">Website</div>
+                </div>
+                
+                <div class="contact-action" onclick="window.location.href='mailto:karmamani432@gmail.com'">
+                    <div class="contact-action-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-action-label">Email</div>
+                </div>
+                
+                <div class="contact-action" onclick="window.open('https://maps.app.goo.gl/example')">
+                    <div class="contact-action-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-action-label">Location</div>
+                </div>
+                
+                <div class="contact-action" onclick="window.open('https://www.facebook.com/profile.php?id=61575242431450')">
+                    <div class="contact-action-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <div class="contact-action-label">Facebook</div>
+                </div>
+                
+                <div class="contact-action" onclick="window.open('https://www.instagram.com/karmamanimetalimpex.in/')">
+                    <div class="contact-action-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="contact-action-label">Instagram</div>
+                </div>
+            </div>
+            
+            
+        </div>
+        
+
+        <!-- UPDATED SHARE SECTION -->
+        <div class="share-section" id="share">
+          <div class="share-container">
+            <h2 class="share-title">Share My Digital Card</h2>
+            <p class="share-subtitle">Scan below QR to open profile</p>
+            
+            <div class="qr-container">
+              <img src="{% static 'media/qrcode.png' %}" alt="QR Code" class="qr-image">
+            </div>
+            
+            <div class="share-buttons">
+              <button class="share-btn" id="shareBtn">
+                <i class="fas fa-share-alt"></i> Share
+              </button>
+              <button class="share-btn save-btn" id="saveQrBtn">
+                <i class="fas fa-download"></i> Save QR
+              </button>
+            </div>
+            
+            <div class="share-link-container">
+              <div class="share-link">https://www.karmamanimetalimpex.in/vcard/</div>
+              <button class="copy-btn" id="copyBtn">
+                <i class="fas fa-copy"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        
+        <!-- Products Section -->
+        <div class="section" id="products">
+            <h2 class="section-title">Our Products</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="{% static 'media/stainless-pipes-tubes.jpeg' %}" alt="Steel Pipes & Tubes" class="product-image">
+                    <div class="product-content">
+                        <h3 class="product-title">Steel Pipes & Tubes</h3>
+                        <p class="product-description">
+                            We offer stainless steel pipes and tubes manufactured using quality stainless steel 304L grade alloy and approved technology.
+                        </p>
+                        <a href="https://www.karmamanimetalimpex.in/stainless-steel-pipes-tubes/" class="product-btn" target="_blank">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="{% static 'media/sheets-plates-coils.jpeg' %}" alt="Sheets, Plates & Coils" class="product-image">
+                    <div class="product-content">
+                        <h3 class="product-title">Sheets, Plates & Coils</h3>
+                        <p class="product-description">
+                            Our stainless steel sheets, plates & coils offer exceptional sturdiness, precise dimensions, and corrosion resistance.
+                        </p>
+                        <a href="https://www.karmamanimetalimpex.in/stainless-steel-sheets-plates-coils/" class="product-btn" target="_blank">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="{% static 'media/stainless-fittings.jpeg' %}" alt="Steel Pipe Fittings" class="product-image">
+                    <div class="product-content">
+                        <h3 class="product-title">Steel Pipe Fittings</h3>
+                        <p class="product-description">
+                            Available in various shapes, sizes and pressure ratings, manufactured using optimum quality material.
+                        </p>
+                        <a href="https://www.karmamanimetalimpex.in/stainless-steel-pipe-fittings/" class="product-btn" target="_blank">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="{% static 'media/stainless-bars.jpeg' %}" alt="Steel Bars" class="product-image">
+                    <div class="product-content">
+                        <h3 class="product-title">Steel Bars</h3>
+                        <p class="product-description">
+                            Appreciated for durability, high tensile strength and finishing, can be customized as per requirements.
+                        </p>
+                        <a href="https://www.karmamanimetalimpex.in/stainless-steel-bars/" class="product-btn" target="_blank">View Details</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="{% static 'media/stainless-flanges.jpeg' %}" alt="Steel Flanges" class="product-image">
+                    <div class="product-content">
+                        <h3 class="product-title">Steel Flanges</h3>
+                        <p class="product-description">
+                            Available in various shapes, sizes and pressure ratings. Manufactured using optimum quality material ensuring durability and corrosion resistance.
+                        </p>
+                        <a href="https://www.karmamanimetalimpex.in/stainless-steel-flanges/" class="product-btn" target="_blank">View Details</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="{% static 'media/stainless-angle.jpeg' %}" alt="Steel Angles" class="product-image">
+                    <div class="product-content">
+                        <h3 class="product-title">Steel Angles</h3>
+                        <p class="product-description">
+                            Fabricated using top-grade steel. Hot rolled, solution annealed, pickled and straightened. Widely used as machined components.
+                        </p>
+                        <a href="https://www.karmamanimetalimpex.in/stainless-steel-angles/" class="product-btn" target="_blank">View Details</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="{% static 'media/stainless-channel.jpeg' %}" alt="Steel Channels" class="product-image">
+                    <div class="product-content">
+                        <h3 class="product-title">Steel Channels</h3>
+                        <p class="product-description">
+                            Leading supplier and trader of stainless steel channels with precision manufacturing and quality assurance.
+                        </p>
+                        <a href="https://www.karmamanimetalimpex.in/stainless-steel-channels/" class="product-btn" target="_blank">View Details</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="{% static 'media/stainless-flats.jpeg' %}" alt="Steel Flats" class="product-image">
+                    <div class="product-content">
+                        <h3 class="product-title">Steel Flats</h3>
+                        <p class="product-description">
+                            Wide variety of railing flat bars manufactured using high quality stainless steel. Highly heat and chemical resistant.
+                        </p>
+                        <a href="https://www.karmamanimetalimpex.in/stainless-steel-flats/" class="product-btn" target="_blank">View Details</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="{% static 'media/stainless-wires.jpeg' %}" alt="Steel Wires" class="product-image">
+                    <div class="product-content">
+                        <h3 class="product-title">Steel Wires</h3>
+                        <p class="product-description">
+                            Manufactured using updated technology and best quality components. Perfect for various industrial applications.
+                        </p>
+                        <a href="https://www.karmamanimetalimpex.in/stainless-steel-wires/" class="product-btn" target="_blank">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bank Details Section -->
+        <div class="section" id="bank">
+            <h2 class="section-title">Bank Details</h2>
+            <div class="bank-details">
+                <p>
+                    BANK: HDFC BANK<br>
+                    A/C NO.: 99997090086060<br>
+                    IFSC CODE: HDFC0007448<br>
+                    BRANCH: KHOKHARA, AHMEDABAD
+                </p>
+            </div>
+        </div>
+
+        <!-- Certifications Section -->
+        <div class="section" id="certifications">
+            <h2 class="section-title">Certifications</h2>
+            <div class="certifications">
+                <div class="certificate-card">
+                    <img src="{% static 'media/iso_certification.jpeg' %}" alt="ISO Certification" class="certificate-image">
+                    <div class="certificate-content">
+                        <div class="certificate-title">ISO Certification</div>
+                        <a href="{% static 'media/iso_certification.pdf' %}" download class="certificate-btn">
+                            <i class="fas fa-download"></i>
+                            Download
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="certificate-card">
+                    <img src="{% static 'media/udyam_registration.jpeg' %}" alt="Udyam Registration" class="certificate-image">
+                    <div class="certificate-content">
+                        <div class="certificate-title">Udyam Registration</div>
+                        <a href="{% static 'media/udyam_registration.pdf' %}" download class="certificate-btn">
+                            <i class="fas fa-download"></i>
+                            Download
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="certificate-card">
+                    <img src="{% static 'media/msme_certification.jpeg' %}" alt="MSME Certification" class="certificate-image">
+                    <div class="certificate-content">
+                        <div class="certificate-title">MSME Certification</div>
+                        <a href="{% static 'media/msme_certification.pdf' %}" download class="certificate-btn">
+                            <i class="fas fa-download"></i>
+                            Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2023 Karmamani Metal Impex. All Rights Reserved.</p>
+        </div>
+    </div>
+
+    <!-- Notification Element -->
+    <div class="notification" id="notification">Link copied to clipboard!</div>
+    
+    <script>
+        // Add animation to sections as they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        
+                        // Update active nav link
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${entry.target.id}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            // Smooth scrolling for navigation
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Share functionality
+            const shareBtn = document.getElementById('shareBtn');
+            const saveQrBtn = document.getElementById('saveQrBtn');
+            const copyBtn = document.getElementById('copyBtn');
+            const notification = document.getElementById('notification');
+            const cardLink = 'https://www.karmamanimetalimpex.in/vcard/';
+            
+            shareBtn.addEventListener('click', function() {
+                if (navigator.share) {
+                    navigator.share({
+                        title: 'Karmamani Metal Impex Digital Card',
+                        text: 'Check out the digital business card of Karmamani Metal Impex',
+                        url: cardLink
+                    })
+                    .catch(error => console.log('Sharing failed:', error));
+                } else {
+                    // Fallback for browsers that don't support Web Share API
+                    copyToClipboard(cardLink);
+                    showNotification('Link copied! Share it manually.');
+                }
+            });
+            
+            saveQrBtn.addEventListener('click', function() {
+                // Create a temporary link to trigger the download
+                const link = document.createElement('a');
+                link.href = "{% static 'media/qrcode.png' %}";
+                link.download = 'karmamani-metal-impex-qrcode.png';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                showNotification('QR code saved to your device!');
+            });
+            
+            copyBtn.addEventListener('click', function() {
+                copyToClipboard(cardLink);
+                showNotification('Link copied to clipboard!');
+            });
+            
+            function copyToClipboard(text) {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+            }
+            
+            function showNotification(message) {
+                notification.textContent = message;
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>
